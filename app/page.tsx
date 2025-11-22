@@ -20,12 +20,16 @@ export default function Home() {
       <main className="grid grid-cols-1 lg:grid-cols-12 gap-0">
         {/* Left Column - About Section */}
         <div className="lg:col-span-3 bg-gray pt-20 bg-red-100">
-          <section className="min-h-[60vh] flex flex-col justify-between p-8 lg:p-12">
+          <section className="min-h-[60vh] flex flex-col justify-between p-8 lg:p-8">
             <div className="space-y-6">
-              <p className="text-lg md:text-xl leading-relaxed text-foreground">
-                Emote is a startup that specializes in mental health for
-                employees. We treat people with burnout with the help of a
-                therapist and a psychiatrist.
+              <p className="text-base md:text-lg leading-relaxed text-foreground">
+                Tesla Medical Company is a provider of high-quality biomedical
+                devices, offering advanced medical technology for hospitals and
+                clinics. The company supplies diagnostic, monitoring,
+                laboratory, and therapeutic equipment that meets international
+                standards, supported by reliable technical service and
+                professional customer care to enhance healthcare efficiency and
+                patient outcomes.
               </p>
             </div>
 
@@ -40,23 +44,23 @@ export default function Home() {
         </div>
 
         {/* Center Column - Hero and Review */}
-        <div className="lg:col-span-6 bg-pink">
+        <div className="lg:col-span-6 bg-gradient-to-br from-red-100 via-white to-red-100">
           {/* Hero Section */}
           <section className="min-h-[60vh] flex items-center justify-center px-8 pt-32 pb-16">
             <div className="text-center max-w-3xl !font-heading">
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight tracking-tight">
-                HELPING
+              <h1 className="text-6xl md:text-8xl  font-bold  text-foreground leading-tight tracking-tight">
+                Advancing
                 <br />
                 YOUR
                 <br />
-                <span className="text-accent">EMOTIONS</span>
+                <span className="text-pink-400">Healthcare</span>
               </h1>
             </div>
           </section>
 
           {/* Review Section */}
           <div className="relative px-4 pb-8">
-            <div className="p-8 shadow-lg max-w-md mx-auto bg-stone-200">
+            <div className="p-8 shadow-lg max-w-md mx-auto bg-stone-200/80 backdrop-blur-xl">
               <div className="flex items-center gap-4 mb-6 ">
                 <div className="relative rounded-full overflow-hidden bg-muted">
                   <Image
@@ -104,14 +108,14 @@ export default function Home() {
                   className="object-cover"
                 />
               </div>
-              <div className="w-82 h-1 bg-black absolute bottom-8 -right-10" />
+              <div className="w-68 h-1 bg-black absolute bottom-8 -right-2 z-2" />
               {/* Floating Chat Button */}
               <div className="z-2 absolute -bottom-4 left-1/2 -translate-x-1/2 bg-pink-500 rounded-full p-6 shadow-xl">
                 <AiFillMessage className="w-6 h-6 text-white" />
               </div>
             </div>
 
-            <div className="relative w-full bg-neutral-300 py-16">
+            <div className="relative w-full bg-neutral-300 py-16 mb-10">
               {/* Main content container */}
               <p className="text-lg text-center text-neutral-900 absolute top-10 right-1/2 translate-x-1/2">
                 Contact our
