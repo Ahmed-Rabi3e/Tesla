@@ -5,8 +5,8 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import ProductGrid from "../components/Products/product-grid";
-import CategoryFilter from "../components/Products/category-filter";
+import ProductGrid from "../../components/Products/product-grid";
+import CategoryFilter from "../../components/Products/category-filter";
 import { products, categories } from "../../lib/product-data";
 
 export default function ProductsPage() {

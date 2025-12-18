@@ -8,7 +8,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
-import type { Product } from "../../../lib/product-data";
+import type { Product } from "../../lib/product-data";
 
 interface ProductGridProps {
   products: Product[];

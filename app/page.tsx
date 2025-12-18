@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
 
 import {
   FiArrowUpRight,
@@ -64,10 +63,11 @@ export default function Home() {
               <div className="flex items-center gap-4 mb-6 ">
                 <div className="relative rounded-full overflow-hidden bg-muted">
                   <Image
-                    src="/assets/professional-therapist-woman-with-glasses.jpg"
+                    src="/assets/professional-therapist-woman-with-glasses-removebg-preview.png"
                     alt="Reviewer"
                     width={50}
                     height={50}
+                    priority
                     className="object-cover"
                   />
                 </div>
@@ -102,8 +102,8 @@ export default function Home() {
               <div className="relative w-full rounded-3xl overflow-hidden mb-8 z-1">
                 <Image
                   src="/assets/professional-therapist-woman-with-glasses-removebg-preview.png"
-                  width={700}
-                  height={400}
+                  width={400}
+                  height={300}
                   alt="Specialist"
                   className="object-cover"
                 />
@@ -156,9 +156,15 @@ export default function Home() {
           </section>
         </div>
 
-        {/* Bottom Center - 3D Graphic */}
+        {/* Bottom Center - 3D Image */}
         <div className="lg:col-span-6 bg-stone-300">
-          <ThreeDGraphic />
+          <Image
+            src="/assets/heart-hero.webp"
+            alt="3D Graphic"
+            width={700}
+            height={400}
+            className="object-cover"
+          />
         </div>
 
         {/* Bottom Right - Stats */}
@@ -183,104 +189,5 @@ export default function Home() {
         </div>
       </main>
     </div>
-  );
-}
-
-// 3D Graphic Component
-function ThreeDGraphic() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    // Set canvas size
-    const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-    };
-
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    // Draw 3D-like circular graphic
-    const draw = () => {
-      const width = canvas.offsetWidth;
-      const height = canvas.offsetHeight;
-      const centerX = width / 2;
-      const centerY = height / 2;
-      const radius = Math.min(width, height) * 0.35;
-
-      // Clear canvas
-      ctx.clearRect(0, 0, width, height);
-
-      // Draw main circle
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-      ctx.fillStyle = "#2a2a2a";
-      ctx.fill();
-
-      // Draw highlight arc (3D effect)
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius, Math.PI * 0.7, Math.PI * 1.3);
-      ctx.strokeStyle = "#4a4a4a";
-      ctx.lineWidth = radius * 0.3;
-      ctx.stroke();
-
-      // Draw arrow
-      const arrowStartX = centerX - radius * 0.6;
-      const arrowStartY = centerY + radius * 0.3;
-      const arrowEndX = centerX + radius * 0.6;
-      const arrowEndY = centerY - radius * 0.3;
-
-      ctx.beginPath();
-      ctx.moveTo(arrowStartX, arrowStartY);
-      ctx.lineTo(arrowEndX, arrowEndY);
-      ctx.strokeStyle = "#ffffff";
-      ctx.lineWidth = 8;
-      ctx.lineCap = "round";
-      ctx.stroke();
-
-      // Draw arrowhead
-      const arrowHeadSize = 20;
-      const angle = Math.atan2(
-        arrowEndY - arrowStartY,
-        arrowEndX - arrowStartX
-      );
-
-      ctx.beginPath();
-      ctx.moveTo(arrowEndX, arrowEndY);
-      ctx.lineTo(
-        arrowEndX - arrowHeadSize * Math.cos(angle - Math.PI / 6),
-        arrowEndY - arrowHeadSize * Math.sin(angle - Math.PI / 6)
-      );
-      ctx.lineTo(
-        arrowEndX - arrowHeadSize * Math.cos(angle + Math.PI / 6),
-        arrowEndY - arrowHeadSize * Math.sin(angle + Math.PI / 6)
-      );
-      ctx.closePath();
-      ctx.fillStyle = "#ffffff";
-      ctx.fill();
-    };
-
-    draw();
-
-    return () => {
-      window.removeEventListener("resize", resizeCanvas);
-    };
-  }, []);
-
-  return (
-    <section className="min-h-[40vh] flex items-center justify-center p-8">
-      <canvas
-        ref={canvasRef}
-        className="w-full h-full max-w-md max-h-96"
-        style={{ width: "100%", height: "400px" }}
-      />
-    </section>
   );
 }

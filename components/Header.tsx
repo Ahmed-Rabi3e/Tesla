@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { CiSearch } from "react-icons/ci";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -55,6 +56,7 @@ const Header = () => {
             {[
               { id: "/", label: "HOME" },
               { id: "/products", label: "PRODUCTS" },
+              { id: "/about", label: "ABOUT" },
             ].map((link) => (
               <Link
                 key={link.id}
@@ -69,16 +71,20 @@ const Header = () => {
               </Link>
             ))}
 
-            <button className="rounded-full bg-black text-white hover:bg-black/90 px-4 py-1.5 text-[12px] transition-all">
-              START NOW
-            </button>
+            <Link
+              href="/"
+              className="rounded-full bg-black text-white hover:bg-black/90 px-4 py-1.5 text-[12px] transition-all"
+            >
+              Start NOW
+            </Link>
           </nav>
 
           <Link
-            href="#register"
-            className="text-sm font-medium text-foreground underline underline-offset-4 hover:opacity-70 pr-0 md:pr-8"
+            href="/products"
+            className="text-sm font-medium text-foreground underline underline-offset-4 hover:opacity-70 pr-0 md:pr-8 flex items-center gap-1"
           >
-            REGISTER
+            <CiSearch size={26} />
+            <span>SEARCH</span>
           </Link>
         </div>
       </div>
