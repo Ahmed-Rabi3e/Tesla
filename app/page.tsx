@@ -163,7 +163,8 @@ export default function Home() {
             alt="3D Graphic"
             width={700}
             height={400}
-            className="object-cover"
+            className="object-cover w-full h-auto"
+            style={{ width: "100%", height: "auto" }}
           />
         </div>
 

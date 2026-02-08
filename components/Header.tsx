@@ -8,26 +8,12 @@ import { CiSearch } from "react-icons/ci";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("");
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-
-      // Detect visible sections for scroll-based highlighting
-      const sections = ["approach", "impact"];
-      sections.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          const offset = 100;
-          if (rect.top <= offset && rect.bottom > offset) {
-            setActiveSection(id);
-          }
-        }
-      });
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -53,8 +39,11 @@ const Header = () => {
                 className="object-cover"
               />
             </Link>
-
-            <nav className="hidden md:flex items-center gap-8 font-heading">
+            <nav
+              className="hidden md:flex items-center gap-8 font-heading"
+              role="navigation"
+              aria-label="Main navigation"
+            >
               {[
                 { id: "/", label: "HOME" },
                 { id: "/products", label: "PRODUCTS" },
@@ -68,6 +57,7 @@ const Header = () => {
                       ? "text-black underline underline-offset-4"
                       : "text-foreground hover:text-black/80"
                   }`}
+                  aria-current={pathname === link.id ? "page" : undefined}
                 >
                   {link.label}
                 </Link>
@@ -86,6 +76,8 @@ const Header = () => {
                 aria-label="Open menu"
                 onClick={() => setMobileOpen(true)}
                 className="p-2 rounded-md bg-white/10 hover:bg-white/20"
+                aria-expanded={mobileOpen}
+                aria-controls="mobile-menu"
               >
                 <svg
                   className="w-6 h-6"
@@ -117,7 +109,10 @@ const Header = () => {
 
       {/* Mobile Menu Overlay */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-50 bg-black/50 md:hidden">
+        <div
+          id="mobile-menu"
+          className="fixed inset-0 z-50 bg-black/50 md:hidden"
+        >
           <div className="absolute right-0 top-0 w-80 max-w-full h-full bg-white shadow-xl p-6">
             <div className="flex items-center justify-between">
               <Link href="/">

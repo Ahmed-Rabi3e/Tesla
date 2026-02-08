@@ -19,8 +19,49 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Tesla Medical",
-  description: "Tesla Medical Company",
+  title: {
+    default: "Tesla Medical",
+    template: "%s | Tesla Medical",
+  },
+  description:
+    "Tesla Medical Company — reliable biomedical devices, service, and training for hospitals and clinics.",
+  keywords: [
+    "medical devices",
+    "biomedical equipment",
+    "clinical devices",
+    "hospital equipment",
+    "TESLA Medical",
+  ],
+  metadataBase: new URL("https://teslamedical.com"),
+  openGraph: {
+    title: "Tesla Medical",
+    description:
+      "Trusted biomedical devices and service for hospitals and clinics.",
+    url: "https://teslamedical.com",
+    siteName: "Tesla Medical",
+    images: [
+      {
+        url: "/assets/tesla.png",
+        width: 1200,
+        height: 630,
+        alt: "Tesla Medical logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tesla Medical",
+    description:
+      "Trusted biomedical devices and service for hospitals and clinics.",
+    images: ["/assets/tesla.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+  },
 };
 
 export default function RootLayout({
@@ -33,8 +74,15 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${openSans.variable} antialiased`}
       >
+        {/* Skip to content for keyboard users */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-black text-white px-3 py-2 rounded-md z-50"
+        >
+          Skip to content
+        </a>
         <Header />
-        {children}
+        <main id="main-content">{children}</main>
         <Footer />
       </body>
     </html>
