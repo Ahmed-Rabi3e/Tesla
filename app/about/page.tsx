@@ -7,7 +7,7 @@ const About = () => {
       <section className="max-w-6xl mx-auto px-6 py-16 lg:py-28">
         {/* Hero */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+          <div className="space-y-6 mt-6 md:mt-0">
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight !font-heading">
               Helping hospitals
               <br />
